@@ -1,9 +1,9 @@
 {
   "name": "llmgateway",
-  "version": "0.1.0",
-  "description": "Route every provider through LLM Gateway",
+  "version": "0.2.0",
+  "description": "Route every provider through LLM Gateway with proxysoul's sane defaults (coffee theme, nvim, task router, fallbacks)",
   "author": "proxysoul",
-  "tags": ["gateway", "routing", "providers"],
+  "tags": ["gateway", "routing", "providers", "defaults", "theme", "nvim"],
   "providers": {
     "llmgateway": {
       "baseUrl": "https://api.llmgateway.io/v1",
@@ -12,11 +12,101 @@
     }
   },
   "router": {
-    "default": "llmgateway/openai/gpt-4o-mini",
+    "default": "llmgateway/claude-opus-4-6",
     "rules": [
       { "match": "claude*", "route": "llmgateway/anthropic/$1" },
       { "match": "gpt*", "route": "llmgateway/openai/$1" },
       { "match": "gemini*", "route": "llmgateway/google/$1" }
     ]
+  },
+  "config": {
+    "defaultModel": "llmgateway/claude-opus-4-6",
+    "routerRules": [],
+    "editor": {
+      "command": "nvim",
+      "args": []
+    },
+    "theme": {
+      "name": "proxysoul-coffee",
+      "transparent": true,
+      "userMessageOpacity": 0,
+      "diffOpacity": 0,
+      "borderStrength": "default"
+    },
+    "nvimConfig": "none",
+    "editorIntegration": {
+      "diagnostics": true,
+      "symbols": true,
+      "hover": true,
+      "references": true,
+      "definition": true,
+      "codeActions": true,
+      "editorContext": true,
+      "rename": true,
+      "lspStatus": true,
+      "format": true,
+      "syncEditorOnEdit": false,
+      "agentAccess": "off"
+    },
+    "codeExecution": true,
+    "webSearch": true,
+    "compaction": {
+      "strategy": "v2",
+      "triggerThreshold": 0.7,
+      "resetThreshold": 0.4,
+      "keepRecent": 4,
+      "maxToolResults": 30,
+      "llmExtraction": true
+    },
+    "nerdFont": true,
+    "disabledTools": [
+      "skills",
+      "editor",
+      "soul_vision",
+      "refactor",
+      "move_symbol",
+      "rename_file",
+      "rename_symbol"
+    ],
+    "defaultForgeMode": "default",
+    "semanticSummaries": "synthetic",
+    "semanticSummaryLimit": 500,
+    "semanticAutoRegen": false,
+    "repoMapTokenBudget": 16000,
+    "toolTimeout": 5,
+    "instructionFiles": [],
+    "keyPriority": "app",
+    "modelFallback": {
+      "llmgateway/claude-opus-4-6": ["llmgateway/deepseek-v4-pro"],
+      "llmgateway/claude-haiku-4-5": ["llmgateway/gemini-2.5-flash"],
+      "llmgateway/claude-sonnet-4-5": ["llmgateway/kimi-k2.6"]
+    },
+    "taskRouter": {
+      "spark": "llmgateway/claude-haiku-4-5",
+      "ember": "llmgateway/claude-sonnet-4-5",
+      "webSearch": "llmgateway/claude-haiku-4-5",
+      "desloppify": "llmgateway/claude-sonnet-4-5",
+      "verify": "llmgateway/claude-opus-4-6",
+      "compact": "llmgateway/claude-haiku-4-5",
+      "semantic": "llmgateway/claude-haiku-4-5",
+      "default": "llmgateway/claude-opus-4-6",
+      "maxConcurrentAgents": 6
+    },
+    "verbose": false,
+    "showReasoning": false,
+    "performance": {
+      "sendReasoning": false,
+      "effort": "medium",
+      "openaiVerbosity": "low"
+    },
+    "thinking": {
+      "mode": "auto"
+    },
+    "agentFeatures": {
+      "desloppify": true,
+      "verifyEdits": true
+    },
+    "vimHints": false,
+    "diffStyle": "sidebyside"
   }
 }
