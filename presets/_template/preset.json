@@ -1,0 +1,13 @@
+{
+  "name": "_template",
+  "version": "0.1.0",
+  "description": "Short description of what this preset does",
+  "author": "yourhandle",
+  "tags": [],
+  "router": {},
+  "providers": {},
+  "theme": "",
+  "hooks": {},
+  "prompts": {},
+  "config": {}
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "presets": {
+    "llmgateway": {
+      "url": "https://raw.githubusercontent.com/proxysoul/soulforge-presets/main/presets/llmgateway/preset.json",
+      "description": "Route every provider through LLM Gateway with sane defaults",
+      "tags": ["gateway", "routing", "providers"],
+      "author": "proxysoul"
+    }
+  }
+}

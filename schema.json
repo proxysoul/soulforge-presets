@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SoulForge Preset",
+  "type": "object",
+  "required": ["name", "version"],
+  "properties": {
+    "name": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "homepage": { "type": "string", "format": "uri" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "router": { "type": "object" },
+    "providers": { "type": "object" },
+    "theme": { "type": "string" },
+    "themes": { "type": "object" },
+    "hooks": { "type": "object" },
+    "prompts": { "type": "object" },
+    "config": { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+{
+  "name": "llmgateway",
+  "version": "0.1.0",
+  "description": "Route every provider through LLM Gateway",
+  "author": "proxysoul",
+  "tags": ["gateway", "routing", "providers"],
+  "providers": {
+    "llmgateway": {
+      "baseUrl": "https://api.llmgateway.io/v1",
+      "apiKey": "${LLMGATEWAY_API_KEY}",
+      "enabled": true
+    }
+  },
+  "router": {
+    "default": "llmgateway/openai/gpt-4o-mini",
+    "rules": [
+      { "match": "claude*", "route": "llmgateway/anthropic/$1" },
+      { "match": "gpt*", "route": "llmgateway/openai/$1" },
+      { "match": "gemini*", "route": "llmgateway/google/$1" }
+    ]
+  }
+}
