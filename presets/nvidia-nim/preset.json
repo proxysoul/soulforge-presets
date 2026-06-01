@@ -1,0 +1,78 @@
+{
+  "name": "nvidia-nim",
+  "version": "0.1.0",
+  "description": "Run SoulForge on NVIDIA NIM — hosted OpenAI-compatible inference at integrate.api.nvidia.com, with task routing across Llama Nemotron, DeepSeek, Qwen and GLM",
+  "author": "proxysoul",
+  "homepage": "https://build.nvidia.com/models",
+  "tags": ["nvidia", "nim", "openai-compatible", "routing", "providers", "reasoning"],
+  "providers": [
+    {
+      "id": "nvidia-nim",
+      "name": "NVIDIA NIM",
+      "baseURL": "https://integrate.api.nvidia.com/v1",
+      "envVar": "NVIDIA_API_KEY",
+      "models": [
+        "nvidia/llama-3.3-nemotron-super-49b-v1",
+        "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+        "deepseek-ai/deepseek-r1",
+        "deepseek-ai/deepseek-v3.1",
+        "qwen/qwen2.5-coder-32b-instruct",
+        "qwen/qwq-32b",
+        "meta/llama-3.3-70b-instruct",
+        "meta/llama-3.1-8b-instruct",
+        "zai-org/glm-4.6",
+        "moonshotai/kimi-k2-instruct"
+      ],
+      "reasoning": {
+        "effort": "medium"
+      }
+    }
+  ],
+  "config": {
+    "defaultModel": "nvidia-nim/deepseek-ai/deepseek-v3.1",
+    "routerRules": [],
+    "keyPriority": "app",
+    "taskRouter": {
+      "spark": "nvidia-nim/meta/llama-3.1-8b-instruct",
+      "ember": "nvidia-nim/qwen/qwen2.5-coder-32b-instruct",
+      "webSearch": "nvidia-nim/meta/llama-3.1-8b-instruct",
+      "desloppify": "nvidia-nim/meta/llama-3.3-70b-instruct",
+      "verify": "nvidia-nim/deepseek-ai/deepseek-r1",
+      "compact": "nvidia-nim/meta/llama-3.1-8b-instruct",
+      "semantic": "nvidia-nim/meta/llama-3.1-8b-instruct",
+      "default": "nvidia-nim/deepseek-ai/deepseek-v3.1",
+      "maxConcurrentAgents": 4
+    },
+    "modelFallback": {
+      "nvidia-nim/deepseek-ai/deepseek-v3.1": ["nvidia-nim/meta/llama-3.3-70b-instruct"],
+      "nvidia-nim/deepseek-ai/deepseek-r1": ["nvidia-nim/qwen/qwq-32b"],
+      "nvidia-nim/qwen/qwen2.5-coder-32b-instruct": ["nvidia-nim/meta/llama-3.3-70b-instruct"]
+    },
+    "thinking": {
+      "mode": "auto"
+    },
+    "performance": {
+      "sendReasoning": false,
+      "effort": "medium",
+      "openaiVerbosity": "low"
+    },
+    "compaction": {
+      "strategy": "v2",
+      "triggerThreshold": 0.7,
+      "resetThreshold": 0.4,
+      "keepRecent": 4,
+      "maxToolResults": 30,
+      "llmExtraction": true
+    },
+    "repoMapTokenBudget": 16000,
+    "semanticSummaries": "synthetic",
+    "semanticSummaryLimit": 500,
+    "semanticAutoRegen": false,
+    "agentFeatures": {
+      "desloppify": true,
+      "verifyEdits": true
+    },
+    "defaultForgeMode": "default",
+    "instructionFiles": ["soulforge"]
+  }
+}

@@ -11,7 +11,7 @@
     "homepage": { "type": "string", "format": "uri" },
     "tags": { "type": "array", "items": { "type": "string" } },
     "router": { "type": "object" },
-    "providers": { "type": "object" },
+    "providers": { "type": ["object", "array"] },
     "theme": { "type": "string" },
     "themes": { "type": "object" },
     "hooks": { "type": "object" },

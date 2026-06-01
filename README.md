@@ -21,6 +21,7 @@ See [`registry.json`](./registry.json) for the full index, or open the `presets/
 | Preset | Description |
 | ------ | ----------- |
 | `llmgateway` | Routes every provider through LLM Gateway with sane defaults |
+| `nvidia-nim` | Runs SoulForge on NVIDIA NIM with task routing across Nemotron, DeepSeek, Qwen |
 
 ## Contribute
 

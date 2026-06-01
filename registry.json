@@ -6,6 +6,12 @@
       "description": "Route every provider through LLM Gateway with sane defaults",
       "tags": ["gateway", "routing", "providers"],
       "author": "proxysoul"
+    },
+    "nvidia-nim": {
+      "url": "https://raw.githubusercontent.com/proxysoul/soulforge-presets/main/presets/nvidia-nim/preset.json",
+      "description": "Run SoulForge on NVIDIA NIM (integrate.api.nvidia.com) with task routing across Nemotron, DeepSeek, Qwen",
+      "tags": ["nvidia", "nim", "openai-compatible", "routing", "providers"],
+      "author": "proxysoul"
     }
   }
 }
